@@ -169,4 +169,67 @@
     0%, 100% { transform: translateY(0) scale(1); }
     50% { transform: translateY(-5px) scale(1.05); }
   }
+  
+  @keyframes firework {
+    0% {
+      transform: scale(0) rotate(0deg);
+      opacity: 1;
+    }
+    15% {
+      transform: scale(0.3) rotate(180deg);
+      opacity: 1;
+    }
+    30% {
+      transform: scale(0.6) rotate(360deg);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1) rotate(540deg);
+      opacity: 1;
+    }
+    70% {
+      transform: scale(1.2) rotate(720deg);
+      opacity: 0.8;
+    }
+    100% {
+      transform: scale(1.5) rotate(900deg);
+      opacity: 0;
+    }
+  }
+}
+
+.firework {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--firework-color, #FFD700);
+  pointer-events: none;
+  z-index: 1000;
+  animation: firework 2s ease-out forwards;
+}
+
+.firework::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--firework-color, #FFD700) 0%, transparent 70%);
+  animation: firework 2s ease-out forwards;
+}
+
+.firework::after {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--firework-color, #FFD700);
+  opacity: 0.7;
+  animation: firework 2s ease-out forwards;
 }
