@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import DayPage from './DayPage';
+import { dailyContent } from '@/data/dailyContent';
 
 interface TimeLeft {
   days: number;
@@ -12,7 +14,7 @@ interface TimeLeft {
 const BirthdayCountdown = () => {
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   const [isHovered, setIsHovered] = useState(false);
-  const [easterEggClicks, setEasterEggClicks] = useState(0);
+  const [currentDay, setCurrentDay] = useState(0);
 
   // Birthday date: September 18th, 2024 (adjust year as needed)
   const birthdayDate = new Date(2024, 8, 18); // September is month 8 (0-indexed)
@@ -30,29 +32,30 @@ const BirthdayCountdown = () => {
       const difference = targetTime - now;
 
       if (difference > 0) {
+        const daysLeft = Math.floor(difference / (1000 * 60 * 60 * 24));
+        
         setTimeLeft({
-          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+          days: daysLeft,
           hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
           minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
           seconds: Math.floor((difference % (1000 * 60)) / 1000),
         });
+
+        // Calculate current day (10 days before = day 0, birthday = day 10)
+        const day = Math.max(0, Math.min(10, 10 - daysLeft));
+        setCurrentDay(day);
       }
     }, 1000);
 
     return () => clearInterval(timer);
   }, []);
 
-  const handleEasterEggClick = () => {
-    setEasterEggClicks(prev => prev + 1);
+  const getCurrentDayContent = () => {
+    return dailyContent.find(content => content.day === currentDay) || dailyContent[0];
   };
 
-  const getEnneagramMessage = () => {
-    const messages = [
-      "✨ Nine types of wonderful, and you're all of them! ✨",
-      "🌸 Your personality is as beautiful as cherry blossoms 🌸",
-      "💖 Each facet of you sparkles like Disney magic 💖"
-    ];
-    return messages[easterEggClicks % messages.length];
+  const isDayUnlocked = (day: number) => {
+    return day <= currentDay;
   };
 
   return (
@@ -112,39 +115,40 @@ const BirthdayCountdown = () => {
         </div>
       </Card>
 
-      {/* Easter egg button */}
-      <Button
-        variant="secondary"
-        onClick={handleEasterEggClick}
-        className={`transition-all duration-300 ${easterEggClicks > 0 ? 'wiggle' : ''}`}
-      >
-        {easterEggClicks === 0 ? (
-          <>🎭 Discover Your Enneagram Magic</>
-        ) : (
-          <>🌈 {getEnneagramMessage()}</>
+      {/* Daily unlockable content */}
+      <div className="space-y-6">
+        <div className="text-center">
+          <h2 className="text-2xl font-bold text-primary mb-2">
+            Daily Birthday Magic
+          </h2>
+          <p className="text-muted-foreground">
+            Day {currentDay} of 10 • {timeLeft.days === 0 ? "It's your birthday! 🎉" : `${timeLeft.days} days until the big day!`}
+          </p>
+        </div>
+        
+        <DayPage
+          day={currentDay}
+          affirmation={getCurrentDayContent().affirmation}
+          gift={getCurrentDayContent().gift}
+          isUnlocked={isDayUnlocked(currentDay)}
+        />
+        
+        {/* Previous days indicator */}
+        {currentDay > 0 && (
+          <div className="text-center">
+            <p className="text-sm text-muted-foreground mb-3">
+              Previous magical days:
+            </p>
+            <div className="flex justify-center space-x-2">
+              {Array.from({ length: currentDay }, (_, i) => (
+                <div key={i} className="text-lg">
+                  🎁✨
+                </div>
+              ))}
+            </div>
+          </div>
         )}
-      </Button>
-
-      {/* Sanrio-style cute messages */}
-      {easterEggClicks > 2 && (
-        <div className="text-center space-y-2 bounce-cute">
-          <div className="text-4xl">🎀</div>
-          <p className="text-primary font-medium">
-            Hello Kitty says: "You're purrfect just the way you are!" 🐱
-          </p>
-        </div>
-      )}
-
-      {/* Hidden Disney easter egg */}
-      {easterEggClicks > 5 && (
-        <div className="text-center space-y-2 float">
-          <div className="text-4xl">🏰</div>
-          <p className="text-primary font-medium">
-            "The very things that hold you down are going to lift you up!" 🐘
-          </p>
-          <p className="text-xs text-muted-foreground">- Dumbo</p>
-        </div>
-      )}
+      </div>
     </div>
   );
 };
