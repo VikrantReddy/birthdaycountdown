@@ -57,6 +57,13 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        // Custom dreamy theme colors
+        dream: {
+          pink: "hsl(var(--dream-pink))",
+          rose: "hsl(var(--soft-rose))",
+          pearl: "hsl(var(--pearl-white))",
+          kawaii: "hsl(var(--kawaii-pink))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",

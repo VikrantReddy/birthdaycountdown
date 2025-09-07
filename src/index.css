@@ -2,57 +2,66 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Dreamy Birthday Theme - Soft Pink & White Design System */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Soft Background Palette */
+    --background: 340 100% 98%;
+    --foreground: 330 25% 25%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Card & Surface Colors */
+    --card: 340 60% 97%;
+    --card-foreground: 330 25% 30%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 340 80% 98%;
+    --popover-foreground: 330 25% 25%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary - Soft Rose */
+    --primary: 330 60% 75%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary - Blush */
+    --secondary: 340 40% 92%;
+    --secondary-foreground: 330 35% 35%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted - Cotton Candy */
+    --muted: 340 35% 94%;
+    --muted-foreground: 330 20% 50%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Accent - Sakura Pink */
+    --accent: 320 50% 85%;
+    --accent-foreground: 330 40% 30%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Special Theme Colors */
+    --dream-pink: 330 60% 85%;
+    --soft-rose: 340 45% 88%;
+    --pearl-white: 40 20% 97%;
+    --kawaii-pink: 320 70% 90%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Gradients */
+    --gradient-dreamy: linear-gradient(135deg, hsl(340, 60%, 95%), hsl(320, 50%, 92%));
+    --gradient-soft: linear-gradient(180deg, hsl(340, 40%, 97%), hsl(330, 30%, 95%));
+    --gradient-glow: radial-gradient(circle, hsl(330, 60%, 85%, 0.3), transparent);
 
-    --radius: 0.5rem;
+    /* Shadows & Effects */
+    --shadow-soft: 0 4px 20px hsl(330, 60%, 75%, 0.15);
+    --shadow-dreamy: 0 10px 40px hsl(320, 50%, 80%, 0.2);
+    --glow-pink: 0 0 30px hsl(330, 60%, 85%, 0.4);
 
-    --sidebar-background: 0 0% 98%;
+    --destructive: 0 60% 70%;
+    --destructive-foreground: 0 0% 100%;
 
-    --sidebar-foreground: 240 5.3% 26.1%;
+    --border: 340 30% 88%;
+    --input: 340 35% 92%;
+    --ring: 330 60% 75%;
 
-    --sidebar-primary: 240 5.9% 10%;
+    --radius: 1rem;
 
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Animations */
+    --float-duration: 6s;
+    --pulse-duration: 3s;
+    --sparkle-duration: 2s;
   }
 
   .dark {
@@ -101,5 +110,63 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    background: var(--gradient-soft);
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  /* Dreamy Animation Classes */
+  .float {
+    animation: float var(--float-duration) ease-in-out infinite;
+  }
+  
+  .sparkle {
+    animation: sparkle var(--sparkle-duration) ease-in-out infinite;
+  }
+  
+  .glow-soft {
+    box-shadow: var(--glow-pink);
+  }
+  
+  .gradient-dreamy {
+    background: var(--gradient-dreamy);
+  }
+  
+  .gradient-glow {
+    background: var(--gradient-glow);
+  }
+  
+  /* Easter Egg Animations */
+  .wiggle {
+    animation: wiggle 0.5s ease-in-out;
+  }
+  
+  .bounce-cute {
+    animation: bounce-cute 1s ease-in-out;
+  }
+}
+
+@layer utilities {
+  /* Custom Keyframes */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(1deg); }
+  }
+  
+  @keyframes sparkle {
+    0%, 100% { opacity: 0.7; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.05); }
+  }
+  
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(3deg); }
+    75% { transform: rotate(-3deg); }
+  }
+  
+  @keyframes bounce-cute {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-5px) scale(1.05); }
   }
 }
