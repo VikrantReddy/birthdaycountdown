@@ -24,23 +24,22 @@ const DayPage = ({ day, affirmation, gift, isUnlocked }: DayPageProps) => {
   const [showGiftPopup, setShowGiftPopup] = useState(false);
 
   const handleGiftOpen = () => {
-    if (!isGiftOpened) {
-      // Confetti effect
-      confetti({
-        particleCount: 100,
-        spread: 70,
-        origin: { y: 0.6 },
-        colors: ['#FFB6C1', '#FFC0CB', '#FFCCCB', '#FFD700', '#FF69B4']
-      });
+    // Confetti effect
+    confetti({
+      particleCount: 100,
+      spread: 70,
+      origin: { y: 0.6 },
+      colors: ['#FFB6C1', '#FFC0CB', '#FFCCCB', '#FFD700', '#FF69B4']
+    });
 
-      // Save to localStorage
-      const savedGifts = localStorage.getItem('birthdayGifts');
-      const openedGifts = savedGifts ? JSON.parse(savedGifts) : [];
-      openedGifts.push(day);
-      localStorage.setItem('birthdayGifts', JSON.stringify(openedGifts));
-      
-      setIsGiftOpened(true);
-    }
+    // Save to localStorage
+    const savedGifts = localStorage.getItem('birthdayGifts');
+    const openedGifts = savedGifts ? JSON.parse(savedGifts) : [];
+    openedGifts.push(day);
+    localStorage.setItem('birthdayGifts', JSON.stringify(openedGifts));
+    
+    setIsGiftOpened(true);
+
     setShowGiftPopup(true);
   };
 

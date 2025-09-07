@@ -43,7 +43,7 @@ const BirthdayCountdown = () => {
 
         // Calculate current day (10 days before = day 0, birthday = day 10)
         const day = Math.max(0, Math.min(10, 10 - daysLeft));
-        setCurrentDay(day);
+        // setCurrentDay(day);
       }
     }, 1000);
 

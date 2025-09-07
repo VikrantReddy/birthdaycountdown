@@ -1,19 +1,19 @@
 export const dailyContent = [
   {
-    day: 0,
-    affirmation: "✨ You are a magical soul who brings light to everyone around you ✨",
+    day: 0, //done
+    affirmation: "✨ You bring light to everyone around you ✨",
     gift: {
       title: "Tinker Bell's Pixie Dust",
-      description: "Just like Tinker Bell, you have the power to make dreams come true with your kindness and creativity!",
+      description: "You bring happiness into people's lives, or like I'd say 'the color yellow'",
       emoji: "🧚‍♀️"
     }
   },
   {
-    day: 1,
+    day: 1, //done
     affirmation: "🌸 Your gentle heart is as beautiful as cherry blossoms in spring 🌸",
     gift: {
       title: "Hello Kitty's Friendship Bow",
-      description: "A symbol of all the wonderful friendships you create with your caring nature!",
+      description: "You're the kind of friend people can't shut up about",
       emoji: "🎀"
     }
   },
@@ -21,17 +21,17 @@ export const dailyContent = [
     day: 2,
     affirmation: "💖 You have the courage of Belle and the kindness of Cinderella 💖",
     gift: {
-      title: "Enchanted Rose",
-      description: "Like Belle's rose, your beauty comes from within and grows stronger each day!",
-      emoji: "🌹"
+      title: "Toothless' Fire",
+      description: "Stupid but admirable enough to go against the world for what you believe in",
+      emoji: "🔥"
     }
   },
   {
-    day: 3,
+    day: 3, //done
     affirmation: "🌟 Your unique spirit shines brighter than any star in the sky 🌟",
     gift: {
       title: "My Melody's Sweet Dreams",
-      description: "May all your dreams be as sweet and pure as My Melody's heart!",
+      description: "Can be tough to deal with but you bring out the best in people",
       emoji: "🐰"
     }
   },
@@ -39,36 +39,36 @@ export const dailyContent = [
     day: 4,
     affirmation: "🦋 Like a butterfly, you transform everything you touch with grace 🦋",
     gift: {
-      title: "Moana's Ocean Heart",
-      description: "You have the heart of the ocean - deep, powerful, and endlessly giving!",
-      emoji: "💎"
+      title: "Seven drawfs' hat",
+      description: "Hand's down, one of the most hardworking people anyone has ever seen",
+      emoji: "🎅"
     }
   },
   {
-    day: 5,
+    day: 5, //done
     affirmation: "🌈 You are all nine Enneagram types rolled into one amazing person 🌈",
     gift: {
       title: "Kuromi's Rebellious Crown",
-      description: "Sometimes it's okay to be a little rebellious - you're perfectly imperfect!",
+      description: "Don't even get me started, says no (used to) before even listening to me :3",
       emoji: "👑"
     }
   },
   {
-    day: 6,
+    day: 6, //done
     affirmation: "🎭 Your personality has more layers than the most beautiful fairy tale 🎭",
     gift: {
       title: "Rapunzel's Golden Hair",
-      description: "Your inner light can heal and inspire, just like Rapunzel's magical hair!",
+      description: "You've literally come back from crazy depths mostly by yourself, and that's crazy!",
       emoji: "✨"
     }
   },
   {
-    day: 7,
+    day: 7, //done
     affirmation: "🌺 You bloom wherever you're planted, bringing joy to every space 🌺",
     gift: {
-      title: "Pompompurin's Golden Pudding",
-      description: "Sweet, comforting, and always there when someone needs a smile!",
-      emoji: "🍮"
+      title: "Pochacco's Soccer Ball",
+      description: "So clumsy, you can make anyone look sharp xD",
+      emoji: "⚽"
     }
   },
   {
@@ -76,16 +76,16 @@ export const dailyContent = [
     affirmation: "🎪 Life is more colorful and fun because you're in it 🎪",
     gift: {
       title: "Dumbo's Magic Feather",
-      description: "You already have everything you need to soar - believe in yourself!",
+      description: "OR my favorite alternative, a rubber duck 🦆 (does the job though ngl)",
       emoji: "🪶"
     }
   },
   {
-    day: 9,
+    day: 9, //done
     affirmation: "🌙 Tomorrow brings your special day, and the world is ready to celebrate you 🌙",
     gift: {
-      title: "Cinnamoroll's Cloud Dreams",
-      description: "Float on clouds of happiness knowing how loved and cherished you are!",
+      title: "Cinnamoroll's Cloud",
+      description: "I bet you're not just mine but anyone's calm in a chaotic world",
       emoji: "☁️"
     }
   },
